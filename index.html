@@ -41,6 +41,7 @@
             left: 10px;
             font-size: 11px;
             color: #535353;
+            z-index: 20;
         }
         
         .interstitial-wrapper {
@@ -53,22 +54,14 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: rgba(255, 255, 255, 0.8);
-            z-index: 10;
-        }
-        
-        .runner-wrapper {
-            position: relative;
-            width: 600px;
-            height: 150px;
-            overflow: hidden;
             background: white;
+            z-index: 15;
         }
         
         .icon-offline {
-            width: 100px;
-            height: 100px;
+            font-size: 60px;
             margin-bottom: 20px;
+            color: #535353;
         }
         
         .runner-message {
@@ -76,6 +69,7 @@
             color: #535353;
             margin-bottom: 20px;
             text-align: center;
+            line-height: 1.5;
         }
         
         .runner-restart-button {
@@ -91,6 +85,10 @@
         
         .runner-restart-button:hover {
             background: #e0e0e0;
+        }
+        
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
@@ -112,12 +110,13 @@
         const ctx = canvas.getContext('2d');
         const gameOverScreen = document.getElementById('game-over-screen');
         const restartButton = document.getElementById('restart-button');
+        const offlineMessage = document.querySelector('.offline');
         
         let gameSpeed = 6;
         let score = 0;
         let highScore = 0;
         let isJumping = false;
-        let isGameOver = false;
+        let isGameOver = true; // Start with game over state
         let isPlaying = false;
         let animationId;
         let obstacles = [];
@@ -136,12 +135,10 @@
             gravity: 0.4,
             jumpForce: 10,
             update() {
-                // Jumping
                 if (isJumping) {
                     this.y += this.jumpVelocity;
                     this.jumpVelocity += this.gravity;
                     
-                    // Land on ground
                     if (this.y >= groundY) {
                         this.y = groundY;
                         this.jumpVelocity = 0;
@@ -149,17 +146,14 @@
                     }
                 }
                 
-                // Running animation
                 if (!isJumping && isPlaying) {
                     this.frame = (this.frame + 0.2) % 2;
                 }
             },
             draw() {
-                // Draw dino
                 ctx.fillStyle = '#535353';
                 ctx.fillRect(this.x, this.y - this.height, this.width, this.height);
                 
-                // Draw eyes (animation)
                 ctx.fillStyle = 'white';
                 const eyeX = this.frame < 1 ? this.x + 30 : this.x + 32;
                 ctx.fillRect(eyeX, this.y - 35, 4, 4);
@@ -172,14 +166,13 @@
             }
         };
         
-        // Obstacle properties
+        // Obstacle class
         class Obstacle {
             constructor() {
                 this.width = Math.random() < 0.5 ? 20 : 40;
                 this.height = this.width === 20 ? 40 : 30;
                 this.x = canvas.width;
                 this.y = groundY - this.height;
-                this.type = this.width === 20 ? 'cactus' : 'bird';
             }
             
             update() {
@@ -192,7 +185,7 @@
             }
         }
         
-        // Cloud properties
+        // Cloud class
         class Cloud {
             constructor() {
                 this.x = canvas.width;
@@ -223,14 +216,15 @@
             dino.y = groundY;
             dino.jumpVelocity = 0;
             isJumping = false;
-            gameOverScreen.style.display = 'none';
+            gameOverScreen.classList.add('hidden');
+            offlineMessage.classList.remove('hidden');
             animate();
         }
         
         function endGame() {
             isPlaying = false;
             isGameOver = true;
-            gameOverScreen.style.display = 'flex';
+            gameOverScreen.classList.remove('hidden');
             cancelAnimationFrame(animationId);
         }
         
@@ -280,7 +274,6 @@
             ctx.fillStyle = '#535353';
             ctx.fillRect(0, groundY, canvas.width, 2);
             
-            // Ground pattern
             for (let i = 0; i < canvas.width; i += 20) {
                 ctx.fillRect(groundX + i, groundY + 2, 10, 2);
             }
@@ -306,33 +299,24 @@
         function animate() {
             clearCanvas();
             
-            // Update game elements
             dino.update();
             obstacles.forEach(obstacle => obstacle.update());
             clouds.forEach(cloud => cloud.update());
             
-            // Remove off-screen obstacles and clouds
             obstacles = obstacles.filter(obstacle => obstacle.x + obstacle.width > 0);
             clouds = clouds.filter(cloud => cloud.x + cloud.width > 0);
             
-            // Spawn new elements
             spawnObstacle();
             spawnCloud();
-            
-            // Check for collisions
             checkCollision();
-            
-            // Update score
             updateScore();
             
-            // Draw game elements
             drawGround();
             clouds.forEach(cloud => cloud.draw());
             dino.draw();
             obstacles.forEach(obstacle => obstacle.draw());
             drawScore();
             
-            // Continue animation
             if (isPlaying) {
                 animationId = requestAnimationFrame(animate);
             }
@@ -341,6 +325,7 @@
         // Event listeners
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
+                e.preventDefault(); // Prevent spacebar from scrolling page
                 if (isGameOver) {
                     startGame();
                 } else {
@@ -352,7 +337,8 @@
         restartButton.addEventListener('click', startGame);
         
         // Initial setup
-        gameOverScreen.style.display = 'flex';
+        gameOverScreen.classList.remove('hidden');
+        offlineMessage.classList.add('hidden');
     </script>
 </body>
 </html>
