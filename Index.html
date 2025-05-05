@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dino Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f7f7f7;
+        }
+        #game {
+            position: relative;
+            width: 100vw;
+            height: 200px;
+            margin-top: 50vh;
+            transform: translateY(-50%);
+            border-bottom: 1px solid #000;
+        }
+        #dino {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            bottom: 0;
+            left: 50px;
+            background-color: #555;
+        }
+        #cactus {
+            position: absolute;
+            width: 20px;
+            height: 40px;
+            bottom: 0;
+            right: 0;
+            background-color: #2e8b57;
+        }
+        #score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
+        #game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: Arial, sans-serif;
+            font-size: 30px;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div id="dino"></div>
+        <div id="cactus"></div>
+        <div id="score">0</div>
+        <div id="game-over">GAME OVER</div>
+    </div>
+
+    <script>
+        const dino = document.getElementById('dino');
+        const cactus = document.getElementById('cactus');
+        const scoreDisplay = document.getElementById('score');
+        const gameOverDisplay = document.getElementById('game-over');
+        
+        let isJumping = false;
+        let isGameOver = false;
+        let score = 0;
+        
+        function jump() {
+            if (isJumping || isGameOver) return;
+            
+            isJumping = true;
+            let position = 0;
+            let upInterval = setInterval(() => {
+                if (position >= 100) {
+                    clearInterval(upInterval);
+                    // ตกลง
+                    let downInterval = setInterval(() => {
+                        if (position <= 0) {
+                            clearInterval(downInterval);
+                            isJumping = false;
+                        } else {
+                            position -= 5;
+                            dino.style.bottom = position + 'px';
+                        }
+                    }, 20);
+                } else {
+                    position += 5;
+                    dino.style.bottom = position + 'px';
+                }
+            }, 20);
+        }
+        
+        function startGame() {
+            isGameOver = false;
+            gameOverDisplay.style.display = 'none';
+            cactus.style.right = '0px';
+            score = 0;
+            scoreDisplay.textContent = score;
+            
+            let cactusSpeed = 5;
+            let cactusInterval = setInterval(() => {
+                if (isGameOver) {
+                    clearInterval(cactusInterval);
+                    return;
+                }
+                
+                let cactusPosition = parseInt(window.getComputedStyle(cactus).getPropertyValue('right'));
+                let dinoPosition = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'));
+                
+                // ตรวจสอบการชน
+                if (cactusPosition > 500 && cactusPosition < 550 && dinoPosition < 40) {
+                    gameOver();
+                }
+                
+                if (cactusPosition > 800) {
+                    cactusPosition = 0;
+                    score++;
+                    scoreDisplay.textContent = score;
+                    // เพิ่มความเร็วทุก 10 คะแนน
+                    if (score % 10 === 0) {
+                        cactusSpeed += 1;
+                    }
+                }
+                
+                cactusPosition += cactusSpeed;
+                cactus.style.right = cactusPosition + 'px';
+            }, 20);
+        }
+        
+        function gameOver() {
+            isGameOver = true;
+            gameOverDisplay.style.display = 'block';
+        }
+        
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Space') {
+                if (isGameOver) {
+                    startGame();
+                } else {
+                    jump();
+                }
+            }
+        });
+        
+        // เริ่มเกมครั้งแรก
+        startGame();
+    </script>
+</body>
+</html>
