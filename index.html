@@ -25,6 +25,7 @@
             width: 600px;
             height: 150px;
             overflow: hidden;
+            background: white;
         }
         
         .runner-canvas {
@@ -94,13 +95,19 @@
 </head>
 <body>
     <div class="runner-container">
-        <div class="offline">You are offline</div>
+        <div class="offline hidden">You are offline</div>
         <canvas class="runner-canvas" width="600" height="150"></canvas>
         
-        <div class="interstitial-wrapper" id="game-over-screen">
+        <div class="interstitial-wrapper" id="start-screen">
             <div class="icon-offline">🦖</div>
             <div class="runner-message">Unable to connect to the internet<br>Press SPACE to start running</div>
-            <button class="runner-restart-button" id="restart-button">PLAY</button>
+            <button class="runner-restart-button" id="start-button">PLAY</button>
+        </div>
+        
+        <div class="interstitial-wrapper hidden" id="game-over-screen">
+            <div class="icon-offline">🦖</div>
+            <div class="runner-message">Game Over<br>Press SPACE to restart</div>
+            <button class="runner-restart-button" id="restart-button">PLAY AGAIN</button>
         </div>
     </div>
 
@@ -108,7 +115,9 @@
         // Game variables
         const canvas = document.querySelector('.runner-canvas');
         const ctx = canvas.getContext('2d');
+        const startScreen = document.getElementById('start-screen');
         const gameOverScreen = document.getElementById('game-over-screen');
+        const startButton = document.getElementById('start-button');
         const restartButton = document.getElementById('restart-button');
         const offlineMessage = document.querySelector('.offline');
         
@@ -116,7 +125,7 @@
         let score = 0;
         let highScore = 0;
         let isJumping = false;
-        let isGameOver = true; // Start with game over state
+        let isGameOver = false;
         let isPlaying = false;
         let animationId;
         let obstacles = [];
@@ -216,6 +225,7 @@
             dino.y = groundY;
             dino.jumpVelocity = 0;
             isJumping = false;
+            startScreen.classList.add('hidden');
             gameOverScreen.classList.add('hidden');
             offlineMessage.classList.remove('hidden');
             animate();
@@ -225,6 +235,7 @@
             isPlaying = false;
             isGameOver = true;
             gameOverScreen.classList.remove('hidden');
+            offlineMessage.classList.add('hidden');
             cancelAnimationFrame(animationId);
         }
         
@@ -325,19 +336,21 @@
         // Event listeners
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
-                e.preventDefault(); // Prevent spacebar from scrolling page
-                if (isGameOver) {
+                e.preventDefault();
+                if (!isPlaying) {
                     startGame();
-                } else {
+                } else if (!isJumping) {
                     dino.jump();
                 }
             }
         });
         
+        startButton.addEventListener('click', startGame);
         restartButton.addEventListener('click', startGame);
         
-        // Initial setup
-        gameOverScreen.classList.remove('hidden');
+        // Initial setup - show only start screen
+        startScreen.classList.remove('hidden');
+        gameOverScreen.classList.add('hidden');
         offlineMessage.classList.add('hidden');
     </script>
 </body>
