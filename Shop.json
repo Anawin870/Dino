@@ -11,6 +11,12 @@
       "name": "head & shoulders apple fresh ",
       "price": 25,
       "stock": 1
+    },
+    {
+      "barcode": "4902430396653",
+      "name": "รีจอยส์ ริชสมูท",
+      "price": 20,
+      "stock": 2
     }
   ],
   "cart": [],
@@ -30,5 +36,5 @@
       "change": 10
     }
   ],
-  "last_updated": "2025-05-25T05:33:10.621Z"
+  "last_updated": "2025-05-25T05:34:29.665Z"
 }
