@@ -17,9 +17,15 @@
       "name": "นม UHT กล่อง",
       "price": 15,
       "stock": 80
+    },
+    {
+      "barcode": "8850002014039",
+      "name": "สบู่ฟอรี่",
+      "price": 10,
+      "stock": 1
     }
   ],
   "cart": [],
   "transactions": [],
-  "last_updated": "2025-05-25T04:51:42.647Z"
+  "last_updated": "2025-05-25T04:54:16.069Z"
 }
