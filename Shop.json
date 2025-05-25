@@ -1,1 +1,9 @@
-
+{
+  "products": [
+    {"barcode": "8850006234280", "name": ยาสีฟันคอลเกต "price": 10.00, "stock": 100},
+    {"barcode": "789012", "name": "ขนมปังแซนวิช", "price": 25.00, "stock": 50},
+    {"barcode": "345678", "name": "นม UHT กล่อง", "price": 15.00, "stock": 80}
+  ],
+  "cart": [],
+  "last_updated": ""
+}
