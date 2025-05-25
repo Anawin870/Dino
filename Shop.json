@@ -209,6 +209,12 @@
       "name": "ไฮยีน expert wash",
       "price": 5,
       "stock": 12
+    },
+    {
+      "barcode": "8851932196512",
+      "name": "ซันซิล",
+      "price": 2,
+      "stock": 5
     }
   ],
   "cart": [],
@@ -242,5 +248,5 @@
       "change": 30
     }
   ],
-  "last_updated": "2025-05-25T11:16:21.120Z"
+  "last_updated": "2025-05-25T11:16:49.131Z"
 }
