@@ -1,30 +1,5 @@
 {
-  "products": [
-    {
-      "barcode": "123456",
-      "name": "น้ำดื่มขนาด 500ml",
-      "price": 10,
-      "stock": 100
-    },
-    {
-      "barcode": "789012",
-      "name": "ขนมปังแซนวิช",
-      "price": 25,
-      "stock": 50
-    },
-    {
-      "barcode": "345678",
-      "name": "นม UHT กล่อง",
-      "price": 15,
-      "stock": 80
-    },
-    {
-      "barcode": "8850002014039",
-      "name": "สบู่ฟอรี่",
-      "price": 10,
-      "stock": 50
-    }
-  ],
+  "products": [],
   "cart": [],
   "transactions": [
     {
@@ -42,5 +17,5 @@
       "change": 10
     }
   ],
-  "last_updated": "2025-05-25T05:26:39.224Z"
+  "last_updated": "2025-05-25T05:27:42.238Z"
 }
