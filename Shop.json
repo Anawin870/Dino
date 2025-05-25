@@ -3,23 +3,11 @@
     {
       "barcode": "123456",
       "name": "น้ำดื่มขนาด 500ml",
-      "price": 10,
+      "price": 10.00,
       "stock": 100
-    },
-    {
-      "barcode": "789012",
-      "name": "ขนมปังแซนวิช",
-      "price": 25,
-      "stock": 50
-    },
-    {
-      "barcode": "345678",
-      "name": "นม UHT กล่อง",
-      "price": 15,
-      "stock": 80
     }
   ],
   "cart": [],
   "transactions": [],
-  "last_updated": "2025-05-25T04:48:13.826Z"
+  "last_updated": "2023-01-01T00:00:00.000Z"
 }
