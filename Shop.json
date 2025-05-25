@@ -203,6 +203,12 @@
       "name": "ไฮยีน expert wash",
       "price": 5,
       "stock": 12
+    },
+    {
+      "barcode": "8850092257118",
+      "name": "ไฮยีน expert wash",
+      "price": 5,
+      "stock": 12
     }
   ],
   "cart": [],
@@ -236,5 +242,5 @@
       "change": 30
     }
   ],
-  "last_updated": "2025-05-25T11:15:37.801Z"
+  "last_updated": "2025-05-25T11:16:21.120Z"
 }
