@@ -67,14 +67,7 @@
       "stock": 0
     }
   ],
-  "cart": [
-    {
-      "barcode": "8888826016557",
-      "name": "แปรงสีฟัน oral beach คลาสสิค อัลตร้าคลีน",
-      "price": 20,
-      "quantity": 1
-    }
-  ],
+  "cart": [],
   "transactions": [
     {
       "date": "2025-05-25T04:54:40.922Z",
@@ -89,7 +82,21 @@
       "total": 10,
       "payment": 20,
       "change": 10
+    },
+    {
+      "date": "2025-05-25T05:46:11.724Z",
+      "items": [
+        {
+          "barcode": "8888826016557",
+          "name": "แปรงสีฟัน oral beach คลาสสิค อัลตร้าคลีน",
+          "price": 20,
+          "quantity": 1
+        }
+      ],
+      "total": 20,
+      "payment": 50,
+      "change": 30
     }
   ],
-  "last_updated": "2025-05-25T05:45:50.344Z"
+  "last_updated": "2025-05-25T05:46:12.564Z"
 }
