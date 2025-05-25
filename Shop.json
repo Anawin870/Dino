@@ -25,14 +25,22 @@
       "stock": 0
     }
   ],
-  "cart": [
+  "cart": [],
+  "transactions": [
     {
-      "barcode": "8850002014039",
-      "name": "สบู่ฟอรี่",
-      "price": 10,
-      "quantity": 1
+      "date": "2025-05-25T04:54:40.922Z",
+      "items": [
+        {
+          "barcode": "8850002014039",
+          "name": "สบู่ฟอรี่",
+          "price": 10,
+          "quantity": 1
+        }
+      ],
+      "total": 10,
+      "payment": 20,
+      "change": 10
     }
   ],
-  "transactions": [],
-  "last_updated": "2025-05-25T04:54:28.157Z"
+  "last_updated": "2025-05-25T04:54:41.833Z"
 }
