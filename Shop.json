@@ -5,6 +5,12 @@
       "name": "head and shoulders smooth&silky",
       "price": 25,
       "stock": 1
+    },
+    {
+      "barcode": "4902430628204",
+      "name": "head & shoulders apple fresh ",
+      "price": 25,
+      "stock": 1
     }
   ],
   "cart": [],
@@ -24,5 +30,5 @@
       "change": 10
     }
   ],
-  "last_updated": "2025-05-25T05:31:49.906Z"
+  "last_updated": "2025-05-25T05:33:10.621Z"
 }
