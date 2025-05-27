@@ -214,7 +214,7 @@
       "barcode": "8851932196512",
       "name": "ซันซิล",
       "price": 2,
-      "stock": 5
+      "stock": 4
     },
     {
       "barcode": "8850100005212",
@@ -313,7 +313,14 @@
       "stock": 5
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "barcode": "8851932196512",
+      "name": "ซันซิล",
+      "price": 2,
+      "quantity": 1
+    }
+  ],
   "transactions": [],
-  "last_updated": "2025-05-27T12:56:46.554Z"
+  "last_updated": "2025-05-27T12:57:12.020Z"
 }
