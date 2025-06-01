@@ -4,7 +4,7 @@
       "barcode": "4902430628624",
       "name": "head and shoulders smooth&silky",
       "price": 25,
-      "stock": 0
+      "stock": 1
     },
     {
       "barcode": "4902430628204",
@@ -313,14 +313,7 @@
       "stock": 5
     }
   ],
-  "cart": [
-    {
-      "barcode": "4902430628624",
-      "name": "head and shoulders smooth&silky",
-      "price": 25,
-      "quantity": 1
-    }
-  ],
+  "cart": [],
   "transactions": [],
-  "last_updated": "2025-06-01T04:52:20.475Z"
+  "last_updated": "2025-06-01T04:52:23.443Z"
 }
