@@ -76,7 +76,7 @@
       "barcode": "8850006234280",
       "name": "ยาสีฟันคอลเกต",
       "price": 15,
-      "stock": 3
+      "stock": 1
     },
     {
       "barcode": "8851004417057",
@@ -313,7 +313,14 @@
       "stock": 5
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "barcode": "8850006234280",
+      "name": "ยาสีฟันคอลเกต",
+      "price": 15,
+      "quantity": 2
+    }
+  ],
   "transactions": [],
-  "last_updated": "2025-06-01T04:52:23.443Z"
+  "last_updated": "2025-06-14T01:37:53.613Z"
 }
